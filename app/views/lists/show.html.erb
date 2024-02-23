@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @list.name %></h1>
+
+<div>
+  <%= link_to "Back to lists", lists_path %>
+
+  <div>
+  <%= link_to "Create new bookmark", new_list_bookmark_path(@list) %>
+
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %>
+      <em><%= bookmark.comment %></em>
+    </li>
+  <% end %>
+</ul>
+
+
+  <%= button_to "Destroy this list", list_path(@list), method: :delete %>
+</div>

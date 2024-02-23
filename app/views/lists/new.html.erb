@@ -1,0 +1,22 @@
+<%# <h1>Lists#new</h1>
+<p>Find me in app/views/lists/new.html.erb</p> %>
+
+<h1>New list</h1>
+
+<%= simple_form_for(@list) do |f| %>
+
+  <!-- Your form fields go here -->
+ <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to lists", lists_path %>
+</div>
