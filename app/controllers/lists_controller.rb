@@ -1,7 +1,9 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :destroy]
 
   def index
     @lists = List.all
+    @background_colors = ['#ff0000', '#00ff00', '#0000ff']
   end
 
   def new
@@ -10,6 +12,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @bookmark = Bookmark.new
   end
 
   def create
@@ -30,7 +33,10 @@ class ListsController < ApplicationController
 private
 
   def list_params
-    # define your strong parameters here
     params.require(:list).permit(:name)
+  end
+
+  def set_list
+    @list = List.find(params[:id])
   end
 end

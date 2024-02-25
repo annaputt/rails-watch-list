@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: %i[ destroy ]
+  before_action :set_list, only: [:new, :create]
 
   def new
     @bookmark = Bookmark.new
@@ -13,6 +14,8 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to @bookmark, notice: "Bookmark was successfully created."
     else
+      # @review = Review.new
+      #remove @review if necessary
       render :new, status: :unprocessable_entity
     end
   end
@@ -31,5 +34,9 @@ class BookmarksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def bookmark_params
     params.require(:bookmark).permit(:comment, :movie_id)
+  end
+
+  def set_list
+    @list = List.find(params[:list_id])
   end
 end

@@ -72,3 +72,6 @@ gem "simple_form"
 gem "sassc-rails"
 
   gem "dotenv-rails"
+
+  gem 'httparty'
+
